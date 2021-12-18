@@ -1,23 +1,22 @@
-package ua.lomakin.linksaverserver.service;
+package ua.lomakin.linksaverserver.service.security;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ua.lomakin.linksaverserver.DTO.JwtResponseDTO;
-import ua.lomakin.linksaverserver.DTO.LoginRequestDTO;
+import ua.lomakin.linksaverserver.DTO.securityDTO.JwtResponseDTO;
+import ua.lomakin.linksaverserver.DTO.securityDTO.LoginRequestDTO;
 import ua.lomakin.linksaverserver.DTO.MessageResponseDTO;
-import ua.lomakin.linksaverserver.DTO.SignupRequestDTO;
+import ua.lomakin.linksaverserver.DTO.securityDTO.SignupRequestDTO;
 import ua.lomakin.linksaverserver.config.security.UserDetailsImpl;
 import ua.lomakin.linksaverserver.config.security.jwt.JwtUtils;
 import ua.lomakin.linksaverserver.persistance.ERole;
-import ua.lomakin.linksaverserver.persistance.entity.RoleEntity;
-import ua.lomakin.linksaverserver.persistance.entity.UserEntity;
-import ua.lomakin.linksaverserver.persistance.repository.RoleRepository;
-import ua.lomakin.linksaverserver.persistance.repository.UserRepository;
+import ua.lomakin.linksaverserver.persistance.entity.security.RoleEntity;
+import ua.lomakin.linksaverserver.persistance.entity.security.UserEntity;
+import ua.lomakin.linksaverserver.persistance.repository.security.RoleRepository;
+import ua.lomakin.linksaverserver.persistance.repository.security.UserRepository;
 
 import java.util.HashSet;
 import java.util.List;

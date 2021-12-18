@@ -1,17 +1,16 @@
 package ua.lomakin.linksaverserver.controller;
 
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ua.lomakin.linksaverserver.DTO.JwtResponseDTO;
-import ua.lomakin.linksaverserver.DTO.LoginRequestDTO;
+import ua.lomakin.linksaverserver.DTO.securityDTO.JwtResponseDTO;
+import ua.lomakin.linksaverserver.DTO.securityDTO.LoginRequestDTO;
 import ua.lomakin.linksaverserver.DTO.MessageResponseDTO;
-import ua.lomakin.linksaverserver.DTO.SignupRequestDTO;
-import ua.lomakin.linksaverserver.service.AuthService;
+import ua.lomakin.linksaverserver.DTO.securityDTO.SignupRequestDTO;
+import ua.lomakin.linksaverserver.service.security.AuthService;
 
 import javax.validation.Valid;
 

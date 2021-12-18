@@ -1,7 +1,8 @@
-package ua.lomakin.linksaverserver.persistance.entity;
+package ua.lomakin.linksaverserver.persistance.entity.security;
 
 
 import lombok.Data;
+import ua.lomakin.linksaverserver.persistance.entity.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 @Data
-public class UserEntity extends BaseEntity{
+public class UserEntity extends BaseEntity {
 
     @Column(name = "username", nullable = false)
     private String username;

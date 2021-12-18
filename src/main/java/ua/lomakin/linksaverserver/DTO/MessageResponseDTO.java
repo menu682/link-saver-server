@@ -1,14 +1,16 @@
 package ua.lomakin.linksaverserver.DTO;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 
-@Data
+@AllArgsConstructor
+@Getter
+@Setter
 public class MessageResponseDTO {
 
     private String message;
 
-    public MessageResponseDTO(String message) {
-        this.message = message;
-    }
+
 }

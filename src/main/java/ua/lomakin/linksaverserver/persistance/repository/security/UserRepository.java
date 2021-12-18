@@ -1,8 +1,8 @@
-package ua.lomakin.linksaverserver.persistance.repository;
+package ua.lomakin.linksaverserver.persistance.repository.security;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ua.lomakin.linksaverserver.persistance.entity.UserEntity;
+import ua.lomakin.linksaverserver.persistance.entity.security.UserEntity;
 
 import java.util.Optional;
 

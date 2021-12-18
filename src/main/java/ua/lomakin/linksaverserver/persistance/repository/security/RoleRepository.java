@@ -1,9 +1,9 @@
-package ua.lomakin.linksaverserver.persistance.repository;
+package ua.lomakin.linksaverserver.persistance.repository.security;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ua.lomakin.linksaverserver.persistance.ERole;
-import ua.lomakin.linksaverserver.persistance.entity.RoleEntity;
+import ua.lomakin.linksaverserver.persistance.entity.security.RoleEntity;
 
 import java.util.Optional;
 

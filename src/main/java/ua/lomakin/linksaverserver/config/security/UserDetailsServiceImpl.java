@@ -4,8 +4,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import ua.lomakin.linksaverserver.persistance.entity.UserEntity;
-import ua.lomakin.linksaverserver.persistance.repository.UserRepository;
+import ua.lomakin.linksaverserver.persistance.entity.security.UserEntity;
+import ua.lomakin.linksaverserver.persistance.repository.security.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

@@ -1,7 +1,8 @@
-package ua.lomakin.linksaverserver.persistance.entity;
+package ua.lomakin.linksaverserver.persistance.entity.security;
 
 import lombok.Data;
 import ua.lomakin.linksaverserver.persistance.ERole;
+import ua.lomakin.linksaverserver.persistance.entity.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "role")
 @Data
-public class RoleEntity extends BaseEntity{
+public class RoleEntity extends BaseEntity {
 
     @Column(name = "name")
     @Enumerated(EnumType.STRING)
