@@ -26,21 +26,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-@Data
 public class JwtUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
+    private String jwtSecret = "ajsdfkjsadfhjksadfogkdjkdfgjdfgjsdfgdfdfhkjsadhflkjashdflkjhasldkjfhajghlkjbklcxzvue";
+    private int jwtExpirationMs = 86400000;
+    private String jwtIssuser = "LinkServer";
 
-    private static String jwtSecret = "ajsdfkjsadfhjksadfogkdjkdfgjdfgjsdfgdfdfhkjsadhflkjashdflkjhasldkjfhajghlkjbklcxzvue";
-    private static int jwtExpirationMs = 86400000;
-    private static String jwtIssuser = "LinkServer";
+    private Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
 
-
-
-    private static Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
-
-    public static String generateJwtToken(Authentication authentication) {
+    public String generateJwtToken(Authentication authentication) {
 
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
@@ -67,34 +63,20 @@ public class JwtUtils {
                 .addClaims(data)
                 .signWith(key)
                 .compact();
-
-//        return Jwts.builder()
-//                .setSubject((userPrincipal.getUsername()))
-//                .setIssuedAt(new Date())
-//                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-//                .signWith(SignatureAlgorithm.HS512, jwtSecret)
-//                .compact();
-
-
     }
 
-    private static final JwtParser JWT_PARSER = Jwts.parserBuilder()
+    private JwtParser JWT_PARSER = Jwts.parserBuilder()
             .requireIssuer(jwtIssuser)
             .setSigningKey(key)
             .build();
 
-    public static String getUserNameFromJwtToken(String token) {
-
-        String username = (String) JWT_PARSER.parseClaimsJws(token).getBody().get("username");
-        return username;
-
-       // return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
+    public String getUserNameFromJwtToken(String token) {
+        return  (String) JWT_PARSER.parseClaimsJws(token).getBody().get("username");
     }
 
-    public static boolean validateJwtToken(String authToken) {
+    public boolean validateJwtToken(String authToken) {
         try {
             JWT_PARSER.parseClaimsJws(authToken).getBody();
-            //Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
         } catch (SignatureException e) {
             logger.error("Invalid JWT signature: {}", e.getMessage());

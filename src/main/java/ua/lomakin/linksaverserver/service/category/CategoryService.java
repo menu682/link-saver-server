@@ -15,7 +15,7 @@ public class CategoryService {
 
 
     public MessageResponseDTO addCategoryService(CategoryRequestDTO categoryRequestDTO){
-        return new MessageResponseDTO("типа добавлена категория" + categoryRequestDTO.getCategoryName());
+        return new MessageResponseDTO("типа добавлена категория " + categoryRequestDTO.getCategoryName());
     }
 
 
