@@ -22,6 +22,9 @@ public class CategoryController {
 
     @PostMapping("/")
     public MessageResponseDTO addCategory(@RequestBody CategoryRequestDTO categoryRequestDTO){
+
+
+
         return categoryService.addCategoryService(categoryRequestDTO);
     }
 

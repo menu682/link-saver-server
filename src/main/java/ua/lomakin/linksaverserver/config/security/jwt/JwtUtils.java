@@ -8,10 +8,8 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.security.Keys;
-import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import ua.lomakin.linksaverserver.config.security.UserDetailsImpl;
@@ -41,6 +39,7 @@ public class JwtUtils {
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
         Map<String, Object> data = new HashMap<>();
+        data.put("userid", userPrincipal.getId());
         data.put("username", userPrincipal.getUsername());
 
         return Jwts.builder()
@@ -72,6 +71,10 @@ public class JwtUtils {
 
     public String getUserNameFromJwtToken(String token) {
         return  (String) JWT_PARSER.parseClaimsJws(token).getBody().get("username");
+    }
+
+    public Long getUserIdFromJwtToken(String token) {
+        return  Long.valueOf(String.valueOf(JWT_PARSER.parseClaimsJws(token).getBody().get("userid")));
     }
 
     public boolean validateJwtToken(String authToken) {

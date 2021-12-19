@@ -20,6 +20,6 @@ public class CategoryEntity extends BaseEntity {
     private String categoryName;
 
     @ManyToOne
-    private UserEntity user_id;
+    private UserEntity user;
 
 }
