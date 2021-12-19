@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class CategoryPutRequestDTO {
 
-    private String categoryName;
+    private Long categoryId;
     private String newCategoryName;
 
 }

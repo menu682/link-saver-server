@@ -13,8 +13,10 @@ import ua.lomakin.linksaverserver.persistance.entity.category.CategoryEntity;
 import ua.lomakin.linksaverserver.persistance.entity.security.UserEntity;
 import ua.lomakin.linksaverserver.persistance.repository.category.CategoryRepository;
 import ua.lomakin.linksaverserver.persistance.repository.security.UserRepository;
+import ua.lomakin.linksaverserver.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -23,10 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CategoryService {
 
     CategoryRepository categoryRepository;
-    UserRepository userRepository;
-    JwtUtils jwtUtils;
-    AuthTokenFilter authTokenFilter;
-    HttpServletRequest httpServletRequest;
+    UserService userService;
 
     public MessageResponseDTO addCategoryService(CategoryAddRequestDTO categoryAddRequestDTO){
 
@@ -36,9 +35,7 @@ public class CategoryService {
 
         CategoryEntity categoryEntity = new CategoryEntity();
 
-        String token = authTokenFilter.parseJwt(httpServletRequest);
-        Long userId = jwtUtils.getUserIdFromJwtToken(token);
-        UserEntity user = userRepository.getById(userId);
+        UserEntity user = userService.getCurrentUser();
 
         categoryEntity.setCategoryName(categoryAddRequestDTO.getCategoryName());
         categoryEntity.setUser(user);
@@ -51,12 +48,23 @@ public class CategoryService {
 
     public MessageResponseDTO updateCategoryService(CategoryPutRequestDTO categoryPutRequestDTO) {
 
-        if(!categoryRepository.existsByCategoryName(categoryPutRequestDTO.getCategoryName())){
+        if(!categoryRepository.existsById(categoryPutRequestDTO.getCategoryId())){
             return new MessageResponseDTO("Такой категории нет");
         }
 
+        UserEntity user = userService.getCurrentUser();
+
+        List<CategoryEntity> categoryEntityList = categoryRepository.findAllByUser(user);
+        boolean categoryExist = categoryEntityList.stream()
+                .anyMatch(categoryEntity -> categoryEntity.getCategoryName()
+                        .equals(categoryPutRequestDTO.getNewCategoryName()));
+
+        if(categoryExist){
+            return new MessageResponseDTO("Нельзя переименовать, такая категория уже есть");
+        }
+
         CategoryEntity categoryEntity =
-                categoryRepository.findByCategoryName(categoryPutRequestDTO.getCategoryName())
+                categoryRepository.findById(categoryPutRequestDTO.getCategoryId())
                         .orElseThrow(() -> new RuntimeException("Такой категории нет"));
 
 
