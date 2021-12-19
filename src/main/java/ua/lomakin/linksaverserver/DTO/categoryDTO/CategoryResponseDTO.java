@@ -1,14 +1,10 @@
 package ua.lomakin.linksaverserver.DTO.categoryDTO;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.List;
 
-@AllArgsConstructor
-@Getter
-@Setter
+@Data
 public class CategoryResponseDTO {
 
     private List<CategoryDTO> categories;

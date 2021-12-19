@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ua.lomakin.linksaverserver.DTO.MessageResponseDTO;
 import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryAddRequestDTO;
 import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryPutRequestDTO;
-import ua.lomakin.linksaverserver.service.category.CategoryService;
+import ua.lomakin.linksaverserver.service.CategoryService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

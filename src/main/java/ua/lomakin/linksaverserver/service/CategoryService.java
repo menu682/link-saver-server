@@ -1,4 +1,4 @@
-package ua.lomakin.linksaverserver.service.category;
+package ua.lomakin.linksaverserver.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +10,6 @@ import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryPutRequestDTO;
 import ua.lomakin.linksaverserver.persistance.entity.category.CategoryEntity;
 import ua.lomakin.linksaverserver.persistance.entity.security.UserEntity;
 import ua.lomakin.linksaverserver.persistance.repository.category.CategoryRepository;
-import ua.lomakin.linksaverserver.service.UserService;
 
 import java.util.List;
 
@@ -25,13 +24,18 @@ public class CategoryService {
 
     public MessageResponseDTO addCategoryService(CategoryAddRequestDTO categoryAddRequestDTO){
 
-        if(categoryRepository.existsByCategoryName(categoryAddRequestDTO.getCategoryName())){
-            return new MessageResponseDTO("Такая категория уже есть");
+        UserEntity user = userService.getCurrentUser();
+
+        List<CategoryEntity> categoryEntityList = categoryRepository.findAllByUser(user);
+        boolean categoryExist = categoryEntityList.stream()
+                .anyMatch(categoryEntity -> categoryEntity.getCategoryName()
+                        .equals(categoryAddRequestDTO.getCategoryName()));
+
+        if(categoryExist){
+            return new MessageResponseDTO("Нельзя создать, такая категория уже есть");
         }
 
         CategoryEntity categoryEntity = new CategoryEntity();
-
-        UserEntity user = userService.getCurrentUser();
 
         categoryEntity.setCategoryName(categoryAddRequestDTO.getCategoryName());
         categoryEntity.setUser(user);
