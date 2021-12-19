@@ -5,9 +5,8 @@ import lombok.Data;
 @Data
 public class LinkAddRequestDTO {
 
-    private String name;
+    private String linkName;
     private String url;
     private Long categoryId;
-    private Long userId;
 
 }

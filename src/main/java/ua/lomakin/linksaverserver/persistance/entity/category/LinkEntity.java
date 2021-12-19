@@ -17,6 +17,9 @@ public class LinkEntity extends BaseEntity {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "url")
+    private String url;
+
     @ManyToOne
     CategoryEntity category;
 

@@ -19,6 +19,6 @@ public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> 
 
     Optional<CategoryEntity> findById(Long id);
 
-    @Query(value = "from CategoryEntity as category where category.user = ?1")
+    //@Query(value = "from CategoryEntity as category where category.user = ?1")
     List<CategoryEntity> findAllByUser(UserEntity user);
 }
