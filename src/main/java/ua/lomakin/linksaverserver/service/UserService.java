@@ -25,8 +25,7 @@ public class UserService {
     public UserEntity getCurrentUser(){
         String token = authTokenFilter.parseJwt(httpServletRequest);
         Long userId = jwtUtils.getUserIdFromJwtToken(token);
-        UserEntity user = userRepository.getById(userId);
-        return user;
+        return userRepository.getById(userId);
     }
 
 }

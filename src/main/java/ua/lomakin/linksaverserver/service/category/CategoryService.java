@@ -7,15 +7,11 @@ import org.springframework.stereotype.Service;
 import ua.lomakin.linksaverserver.DTO.MessageResponseDTO;
 import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryAddRequestDTO;
 import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryPutRequestDTO;
-import ua.lomakin.linksaverserver.config.security.jwt.AuthTokenFilter;
-import ua.lomakin.linksaverserver.config.security.jwt.JwtUtils;
 import ua.lomakin.linksaverserver.persistance.entity.category.CategoryEntity;
 import ua.lomakin.linksaverserver.persistance.entity.security.UserEntity;
 import ua.lomakin.linksaverserver.persistance.repository.category.CategoryRepository;
-import ua.lomakin.linksaverserver.persistance.repository.security.UserRepository;
 import ua.lomakin.linksaverserver.service.UserService;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Service
