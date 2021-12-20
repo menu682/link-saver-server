@@ -28,25 +28,9 @@ public class UserService {
     AuthTokenFilter authTokenFilter;
     HttpServletRequest httpServletRequest;
 
-    UserDetailsImpl userDetails;
+
 
     public UserEntity getCurrentUser(){
-
-//        проблема в получении RoleEntity с grantedAuthority
-//        userDetails.getAuthorities().stream()
-//                .map(grantedAuthority ->
-//                        ERole.valueOf(String.valueOf(grantedAuthority))
-//                ).collect(Collectors.toSet());
-//
-//
-//
-//        UserEntity user = new UserEntity();
-//        user.setId(userDetails.getId());
-//        user.setUsername(userDetails.getUsername());
-//        user.setEmail(userDetails.getEmail());
-//        user.setPassword(userDetails.getPassword());
-//        user.setRoles();
-//
 
         String token = authTokenFilter.parseJwt(httpServletRequest);
         Long userId = jwtUtils.getUserIdFromJwtToken(token);

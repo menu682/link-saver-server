@@ -15,4 +15,6 @@ public interface LinkRepository extends JpaRepository<LinkEntity, Long> {
 
     Optional<LinkEntity> findByIdAndNameAndUrl(Long id, String name, String url);
 
+    Integer removeByIdAndCategoryAndUser(Long linkId, CategoryEntity category, UserEntity user);
+
 }

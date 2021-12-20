@@ -1,6 +1,7 @@
 package ua.lomakin.linksaverserver.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ua.lomakin.linksaverserver.DTO.MessageResponseDTO;
 import ua.lomakin.linksaverserver.DTO.linkDTO.LinkAddRequestDTO;
 import ua.lomakin.linksaverserver.DTO.linkDTO.LinkChangeRequestDTO;
+import ua.lomakin.linksaverserver.DTO.linkDTO.LinkDelRequestDTO;
 import ua.lomakin.linksaverserver.service.LinkService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -32,9 +34,11 @@ public class LinkController {
         return linkService.changeLink(linkChangeRequestDTO);
     }
 
-    //put link
+    @DeleteMapping("/")
+    public MessageResponseDTO deleteLink(@RequestBody LinkDelRequestDTO linkDelRequestDTO){
+        return linkService.deleteLink(linkDelRequestDTO);
+    }
 
-    //delete link
 
 
 

@@ -7,18 +7,21 @@ import org.springframework.stereotype.Service;
 import ua.lomakin.linksaverserver.DTO.MessageResponseDTO;
 import ua.lomakin.linksaverserver.DTO.linkDTO.LinkAddRequestDTO;
 import ua.lomakin.linksaverserver.DTO.linkDTO.LinkChangeRequestDTO;
+import ua.lomakin.linksaverserver.DTO.linkDTO.LinkDelRequestDTO;
 import ua.lomakin.linksaverserver.persistance.entity.category.CategoryEntity;
 import ua.lomakin.linksaverserver.persistance.entity.category.LinkEntity;
 import ua.lomakin.linksaverserver.persistance.entity.security.UserEntity;
 import ua.lomakin.linksaverserver.persistance.repository.category.CategoryRepository;
 import ua.lomakin.linksaverserver.persistance.repository.category.LinkRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
 @Getter
 @Setter
+@Transactional
 public class LinkService {
 
     LinkRepository linkRepository;
@@ -91,5 +94,23 @@ public class LinkService {
         linkRepository.save(linkEntity);
 
         return new MessageResponseDTO("Ссылка изменена");
+    }
+
+    public MessageResponseDTO deleteLink(LinkDelRequestDTO linkDelRequestDTO) {
+
+        UserEntity user = userService.getCurrentUser();
+        CategoryEntity category = categoryRepository
+                .findById(linkDelRequestDTO.getCategoryId())
+                .orElseThrow(() -> new RuntimeException("Нет такой категории"));
+
+        Integer isDeleted = linkRepository.
+                removeByIdAndCategoryAndUser(linkDelRequestDTO.getLinkId(), category, user);
+
+        if (isDeleted > 0){
+            return new MessageResponseDTO("Ссылка удалена");
+        }
+
+        return new MessageResponseDTO("Такой ссылки не существует");
+
     }
 }
