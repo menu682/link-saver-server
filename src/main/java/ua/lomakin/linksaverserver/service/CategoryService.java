@@ -63,6 +63,7 @@ public class CategoryService {
             return new MessageResponseDTO("Нельзя переименовать, такая категория уже есть");
         }
 
+        //TODO доставать не из базы а из листа
         CategoryEntity categoryEntity =
                 categoryRepository.findById(categoryPutRequestDTO.getCategoryId())
                         .orElseThrow(() -> new RuntimeException("Такой категории нет"));

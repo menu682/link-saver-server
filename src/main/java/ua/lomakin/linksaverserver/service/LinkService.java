@@ -72,11 +72,18 @@ public class LinkService {
                     "Такая ссылка или название ссылки уже есть в этой категории");
         }
 
-        LinkEntity linkEntity = linkRepository.findByIdAndNameAndUrl(
-                linkChangeRequestDTO.getLinkId(),
-                linkChangeRequestDTO.getOldLinkName(),
-                linkChangeRequestDTO.getOldUrl()
-                    ).orElseThrow(() -> new RuntimeException("Такой ссылки нет"));
+        LinkEntity linkEntity = linkEntityList.stream()
+                .filter(link -> link.getUrl().equals(linkChangeRequestDTO.getOldUrl())
+                && link.getId().equals(linkChangeRequestDTO.getLinkId())
+                && link.getName().equals(linkChangeRequestDTO.getOldLinkName()))
+                .findFirst().orElseThrow(() -> new RuntimeException("Такой ссылки нет"));
+
+//        LinkEntity linkEntity = linkRepository.findByIdAndNameAndUrl(
+//                linkChangeRequestDTO.getLinkId(),
+//                linkChangeRequestDTO.getOldLinkName(),
+//                linkChangeRequestDTO.getOldUrl()
+//                    ).orElseThrow(() -> new RuntimeException("Такой ссылки нет"));
+
         linkEntity.setName(linkChangeRequestDTO.getNewLinkName());
         linkEntity.setUrl(linkChangeRequestDTO.getNewUrl());
         linkEntity.setCategory(category);
