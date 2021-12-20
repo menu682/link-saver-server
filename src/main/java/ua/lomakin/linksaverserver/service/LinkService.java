@@ -25,7 +25,6 @@ public class LinkService {
     CategoryRepository categoryRepository;
     UserService userService;
 
-
     public MessageResponseDTO addLink(LinkAddRequestDTO linkAddRequestDTO) {
 
         UserEntity user = userService.getCurrentUser();
