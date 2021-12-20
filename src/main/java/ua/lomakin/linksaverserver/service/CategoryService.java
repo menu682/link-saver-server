@@ -93,7 +93,7 @@ public class CategoryService {
                         .equals(categoryAddRequestDTO.getCategoryName()));
 
         if(categoryExist){
-            return new MessageResponseDTO("Нельзя создать, такая категория уже есть");
+            throw new RuntimeException("Нельзя создать, такая категория уже есть");
         }
 
         CategoryEntity categoryEntity = new CategoryEntity();
@@ -110,7 +110,7 @@ public class CategoryService {
     public MessageResponseDTO updateCategoryService(CategoryPutRequestDTO categoryPutRequestDTO) {
 
         if(!categoryRepository.existsById(categoryPutRequestDTO.getCategoryId())){
-            return new MessageResponseDTO("Такой категории нет");
+            throw new RuntimeException("Такой категории нет");
         }
 
         UserEntity user = userService.getCurrentUser();
@@ -121,7 +121,7 @@ public class CategoryService {
                         .equals(categoryPutRequestDTO.getNewCategoryName()));
 
         if(categoryExist){
-            return new MessageResponseDTO("Нельзя переименовать, такая категория уже есть");
+            throw new RuntimeException("Нельзя переименовать, такая категория уже есть");
         }
 
         CategoryEntity categoryEntity = categoryEntityList.stream()
@@ -154,7 +154,7 @@ public class CategoryService {
             return new MessageResponseDTO("Категория удалена. В категории удалено " + delLinks + " ссылок!");
         }
 
-        return new MessageResponseDTO("Такая категори не существует.");
+        throw new RuntimeException("Такая категори не существует.");
     }
 
 

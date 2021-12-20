@@ -41,7 +41,7 @@ public class LinkService {
                 || linkEntity.getUrl().equals(linkAddRequestDTO.getUrl()));
 
         if (linkExist){
-            return new MessageResponseDTO(
+            throw new RuntimeException(
                     "Такая ссылка или название ссылки уже есть в этой категории");
         }
 
@@ -70,7 +70,7 @@ public class LinkService {
                         || linkEntity.getUrl().equals(linkChangeRequestDTO.getNewUrl()));
 
         if (linkExist){
-            return new MessageResponseDTO(
+            throw new RuntimeException(
                     "Такая ссылка или название ссылки уже есть в этой категории");
         }
 
@@ -110,7 +110,7 @@ public class LinkService {
             return new MessageResponseDTO("Ссылка удалена");
         }
 
-        return new MessageResponseDTO("Такой ссылки не существует");
+        throw new RuntimeException("Такой ссылки не существует");
 
     }
 }

@@ -70,12 +70,18 @@ public class AuthService {
 
     public MessageResponseDTO registerUser(SignupRequestDTO signupRequestDTO) {
 
+        if(signupRequestDTO.getUsername().isEmpty()
+                || signupRequestDTO.getPassword().isEmpty()
+                || signupRequestDTO.getEmail().isEmpty()){
+            throw new RuntimeException("Поля не должны быть пустыми");
+        }
+
         if (userRepository.existsByUsername(signupRequestDTO.getUsername())) {
-            return new MessageResponseDTO("Такое имя уже занято, попробуйте другое.");
+            throw new RuntimeException("Такое имя уже занято, попробуйте другое.");
         }
 
         if (userRepository.existsByEmail(signupRequestDTO.getEmail())) {
-            return new MessageResponseDTO("Такой email уже занят, попробуйте другой.");
+            throw new RuntimeException("Такой email уже занят, попробуйте другой.");
         }
 
         UserEntity userEntity = new UserEntity();
