@@ -26,12 +26,12 @@ public class AuthController {
         this.authService = authService;
     }
 
-    @PostMapping("/login/")
+    @PostMapping("/login")
     public JwtResponseDTO login(@Valid @RequestBody LoginRequestDTO loginRequestDTO){
         return authService.loginUser(loginRequestDTO);
     }
 
-    @PostMapping("/register/")
+    @PostMapping("/register")
     public MessageResponseDTO register(@Valid @RequestBody SignupRequestDTO signupRequestDTO){
         return authService.registerUser(signupRequestDTO);
     }

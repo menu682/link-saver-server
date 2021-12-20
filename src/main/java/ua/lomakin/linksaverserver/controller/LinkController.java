@@ -15,7 +15,7 @@ import ua.lomakin.linksaverserver.service.LinkService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/link/")
+@RequestMapping("/api/link")
 public class LinkController {
 
     LinkService linkService;
@@ -24,17 +24,17 @@ public class LinkController {
         this.linkService = linkService;
     }
 
-    @PostMapping("/")
+    @PostMapping()
     public MessageResponseDTO addLink(@RequestBody LinkAddRequestDTO linkAddRequestDTO){
         return linkService.addLink(linkAddRequestDTO);
     }
 
-    @PutMapping("/")
+    @PutMapping()
     public MessageResponseDTO changeLink(@RequestBody LinkChangeRequestDTO linkChangeRequestDTO){
         return linkService.changeLink(linkChangeRequestDTO);
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping()
     public MessageResponseDTO deleteLink(@RequestBody LinkDelRequestDTO linkDelRequestDTO){
         return linkService.deleteLink(linkDelRequestDTO);
     }

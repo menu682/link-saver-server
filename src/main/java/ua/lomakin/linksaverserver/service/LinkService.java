@@ -11,8 +11,8 @@ import ua.lomakin.linksaverserver.DTO.linkDTO.LinkDelRequestDTO;
 import ua.lomakin.linksaverserver.persistance.entity.category.CategoryEntity;
 import ua.lomakin.linksaverserver.persistance.entity.category.LinkEntity;
 import ua.lomakin.linksaverserver.persistance.entity.security.UserEntity;
-import ua.lomakin.linksaverserver.persistance.repository.category.CategoryRepository;
-import ua.lomakin.linksaverserver.persistance.repository.category.LinkRepository;
+import ua.lomakin.linksaverserver.persistance.repository.CategoryRepository;
+import ua.lomakin.linksaverserver.persistance.repository.LinkRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
