@@ -1,6 +1,5 @@
 package ua.lomakin.linksaverserver.persistance.entity.security;
 
-import lombok.Data;
 import ua.lomakin.linksaverserver.persistance.ERole;
 import ua.lomakin.linksaverserver.persistance.entity.BaseEntity;
 
@@ -9,14 +8,32 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "role")
-@Data
 public class RoleEntity extends BaseEntity {
 
     @Column(name = "name")
     @Enumerated(EnumType.STRING)
     private ERole name;
 
+    public RoleEntity() {
+    }
+
+    public RoleEntity(Long id,
+                      LocalDateTime created,
+                      LocalDateTime updated,
+                      ERole name) {
+        super(id, created, updated);
+        this.name = name;
+    }
+
+    public ERole getName() {
+        return name;
+    }
+
+    public void setName(ERole name) {
+        this.name = name;
+    }
 }

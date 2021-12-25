@@ -39,7 +39,4 @@ public class LinkController {
         return linkService.deleteLink(linkDelRequestDTO);
     }
 
-
-
-
 }

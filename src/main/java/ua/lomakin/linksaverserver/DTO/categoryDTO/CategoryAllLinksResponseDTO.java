@@ -1,12 +1,9 @@
 package ua.lomakin.linksaverserver.DTO.categoryDTO;
 
-
-import lombok.Data;
 import ua.lomakin.linksaverserver.DTO.linkDTO.LinkDTO;
-
 import java.util.List;
 
-@Data
+
 public class CategoryAllLinksResponseDTO {
 
     private Long categoryId;
@@ -14,4 +11,45 @@ public class CategoryAllLinksResponseDTO {
     private List<LinkDTO> categoryLinks;
     private String message;
 
+    public CategoryAllLinksResponseDTO() {
+    }
+
+    public CategoryAllLinksResponseDTO(Long categoryId, String categoryName, List<LinkDTO> categoryLinks, String message) {
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
+        this.categoryLinks = categoryLinks;
+        this.message = message;
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public List<LinkDTO> getCategoryLinks() {
+        return categoryLinks;
+    }
+
+    public void setCategoryLinks(List<LinkDTO> categoryLinks) {
+        this.categoryLinks = categoryLinks;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

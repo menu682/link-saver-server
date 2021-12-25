@@ -1,8 +1,5 @@
 package ua.lomakin.linksaverserver.service;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 import ua.lomakin.linksaverserver.config.security.jwt.AuthTokenFilter;
 import ua.lomakin.linksaverserver.config.security.jwt.JwtUtils;
@@ -12,9 +9,6 @@ import ua.lomakin.linksaverserver.persistance.repository.security.UserRepository
 import javax.servlet.http.HttpServletRequest;
 
 @Service
-@AllArgsConstructor
-@Getter
-@Setter
 public class UserService {
 
     UserRepository userRepository;
@@ -22,7 +16,15 @@ public class UserService {
     AuthTokenFilter authTokenFilter;
     HttpServletRequest httpServletRequest;
 
-
+    public UserService(UserRepository userRepository,
+                       JwtUtils jwtUtils,
+                       AuthTokenFilter authTokenFilter,
+                       HttpServletRequest httpServletRequest) {
+        this.userRepository = userRepository;
+        this.jwtUtils = jwtUtils;
+        this.authTokenFilter = authTokenFilter;
+        this.httpServletRequest = httpServletRequest;
+    }
 
     public UserEntity getCurrentUser(){
 

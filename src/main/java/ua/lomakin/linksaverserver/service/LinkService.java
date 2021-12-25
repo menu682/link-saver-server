@@ -1,8 +1,5 @@
 package ua.lomakin.linksaverserver.service;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 import ua.lomakin.linksaverserver.DTO.MessageResponseDTO;
 import ua.lomakin.linksaverserver.DTO.linkDTO.LinkAddRequestDTO;
@@ -18,15 +15,20 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
-@Getter
-@Setter
 @Transactional
 public class LinkService {
 
     LinkRepository linkRepository;
     CategoryRepository categoryRepository;
     UserService userService;
+
+    public LinkService(LinkRepository linkRepository,
+                       CategoryRepository categoryRepository,
+                       UserService userService) {
+        this.linkRepository = linkRepository;
+        this.categoryRepository = categoryRepository;
+        this.userService = userService;
+    }
 
     public MessageResponseDTO addLink(LinkAddRequestDTO linkAddRequestDTO) {
 
@@ -79,12 +81,6 @@ public class LinkService {
                 && link.getId().equals(linkChangeRequestDTO.getLinkId())
                 && link.getName().equals(linkChangeRequestDTO.getOldLinkName()))
                 .findFirst().orElseThrow(() -> new RuntimeException("Такой ссылки нет"));
-
-//        LinkEntity linkEntity = linkRepository.findByIdAndNameAndUrl(
-//                linkChangeRequestDTO.getLinkId(),
-//                linkChangeRequestDTO.getOldLinkName(),
-//                linkChangeRequestDTO.getOldUrl()
-//                    ).orElseThrow(() -> new RuntimeException("Такой ссылки нет"));
 
         linkEntity.setName(linkChangeRequestDTO.getNewLinkName());
         linkEntity.setUrl(linkChangeRequestDTO.getNewUrl());

@@ -27,7 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     private final UserDetailsServiceImpl userDetailsService;
     private final AuthEntryPointJwt unauthorizedHandler;
 
-    public WebSecurityConfig(UserDetailsServiceImpl userDetailsService, AuthEntryPointJwt unauthorizedHandler) {
+    public WebSecurityConfig(UserDetailsServiceImpl userDetailsService,
+                             AuthEntryPointJwt unauthorizedHandler) {
         this.userDetailsService = userDetailsService;
         this.unauthorizedHandler = unauthorizedHandler;
     }
@@ -38,8 +39,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     }
 
     @Override
-    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-        authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder)
+            throws Exception {
+        authenticationManagerBuilder.userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder());
     }
 
     @Bean

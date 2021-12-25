@@ -29,18 +29,24 @@ public class JwtUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-//    @Value("${app.jwtSecret}")
-//    private String jwtSecret;
-//    @Value("${app.jwtExpirationMs}")
-//    private int jwtExpirationMs;
-//    @Value("${app.jwtIssuser}")
-//    private String jwtIssuser;
+    private String jwtSecret;
+    private int jwtExpirationMs;
+    private String jwtIssuser;
+    private Key key;
+    private JwtParser JWT_PARSER;
 
-    private String jwtSecret = "ajsdfkjsadfhjksadfogkdjkdfgjdfgjsdfgdfdfhkjsadhflkjashdflkjhasldkjfhajghlkjbklcxzvue";
-    private int jwtExpirationMs = 86400000;
-    private String jwtIssuser = "LinkServer";
-
-    private Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+    public JwtUtils(@Value("${app.jwtSecret}") String jwtSecret,
+                    @Value("${app.jwtExpirationMs}") int jwtExpirationMs,
+                    @Value("${app.jwtIssuser}") String jwtIssuser) {
+        this.jwtSecret = jwtSecret;
+        this.jwtExpirationMs = jwtExpirationMs;
+        this.jwtIssuser = jwtIssuser;
+        this.key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+        this.JWT_PARSER = Jwts.parserBuilder()
+                .requireIssuer(jwtIssuser)
+                .setSigningKey(key)
+                .build();
+    }
 
     public String generateJwtToken(Authentication authentication) {
 
@@ -71,11 +77,6 @@ public class JwtUtils {
                 .signWith(key)
                 .compact();
     }
-
-    private JwtParser JWT_PARSER = Jwts.parserBuilder()
-            .requireIssuer(jwtIssuser)
-            .setSigningKey(key)
-            .build();
 
     public String getUserNameFromJwtToken(String token) {
         return  (String) JWT_PARSER.parseClaimsJws(token).getBody().get("username");
