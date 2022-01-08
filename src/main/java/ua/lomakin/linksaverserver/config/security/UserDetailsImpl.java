@@ -18,6 +18,7 @@ public class UserDetailsImpl implements UserDetails {
     private Long id;
     private String username;
     private String email;
+    private Collection<? extends GrantedAuthority> authorities;
 
     @JsonIgnore
     private String password;
@@ -33,8 +34,6 @@ public class UserDetailsImpl implements UserDetails {
         this.password = password;
         this.authorities = authorities;
     }
-
-    private Collection<? extends GrantedAuthority> authorities;
 
     public static UserDetailsImpl build(UserEntity user) {
         List<GrantedAuthority> authorities = user.getRoles().stream()
