@@ -83,7 +83,11 @@ public class CategoryService {
     }
 
 
-    public MessageResponseDTO addCategoryService(CategoryAddRequestDTO categoryAddRequestDTO){
+    public MessageResponseDTO addCategory(CategoryAddRequestDTO categoryAddRequestDTO){
+
+        if(categoryAddRequestDTO.getCategoryName().isBlank()){
+            throw new RuntimeException("Имя не должно быть пустым!");
+        }
 
         UserEntity user = userService.getCurrentUser();
 
@@ -107,7 +111,11 @@ public class CategoryService {
     }
 
 
-    public MessageResponseDTO updateCategoryService(CategoryPutRequestDTO categoryPutRequestDTO) {
+    public MessageResponseDTO updateCategory(CategoryPutRequestDTO categoryPutRequestDTO) {
+
+        if(categoryPutRequestDTO.getNewCategoryName().isBlank()){
+            throw new RuntimeException("Имя не должно быть пустым!");
+        }
 
         if(!categoryRepository.existsById(categoryPutRequestDTO.getCategoryId())){
             throw new RuntimeException("Такой категории нет");

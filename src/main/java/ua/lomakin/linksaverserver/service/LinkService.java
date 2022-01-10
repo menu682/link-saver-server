@@ -32,6 +32,11 @@ public class LinkService {
 
     public MessageResponseDTO addLink(LinkAddRequestDTO linkAddRequestDTO) {
 
+        if(linkAddRequestDTO.getLinkName().isBlank()
+                || linkAddRequestDTO.getUrl().isBlank()){
+            throw new RuntimeException("Не все поля заполнены!");
+        }
+
         UserEntity user = userService.getCurrentUser();
         CategoryEntity category = categoryRepository
                 .findById(linkAddRequestDTO.getCategoryId())
@@ -59,6 +64,11 @@ public class LinkService {
     }
 
     public MessageResponseDTO changeLink(LinkChangeRequestDTO linkChangeRequestDTO) {
+
+        if(linkChangeRequestDTO.getNewLinkName().isBlank()
+                || linkChangeRequestDTO.getNewUrl().isBlank()){
+            throw new RuntimeException("Не все поля заполнены!");
+        }
 
         UserEntity user = userService.getCurrentUser();
         CategoryEntity category = categoryRepository

@@ -41,12 +41,12 @@ public class CategoryController {
 
     @PostMapping()
     public MessageResponseDTO addCategory(@RequestBody CategoryAddRequestDTO categoryAddRequestDTO){
-        return categoryService.addCategoryService(categoryAddRequestDTO);
+        return categoryService.addCategory(categoryAddRequestDTO);
     }
 
     @PutMapping()
     public MessageResponseDTO updateCategory(@RequestBody CategoryPutRequestDTO categoryPutRequestDTO){
-        return categoryService.updateCategoryService(categoryPutRequestDTO);
+        return categoryService.updateCategory(categoryPutRequestDTO);
     }
 
     @DeleteMapping()
