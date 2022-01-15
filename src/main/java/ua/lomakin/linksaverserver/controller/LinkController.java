@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ua.lomakin.linksaverserver.DTO.MessageResponseDTO;
-import ua.lomakin.linksaverserver.DTO.linkDTO.LinkAddRequestDTO;
-import ua.lomakin.linksaverserver.DTO.linkDTO.LinkChangeRequestDTO;
-import ua.lomakin.linksaverserver.DTO.linkDTO.LinkDelRequestDTO;
+import ua.lomakin.linksaverserver.dto.MessageResponseDTO;
+import ua.lomakin.linksaverserver.dto.link.LinkAddRequestDTO;
+import ua.lomakin.linksaverserver.dto.link.LinkChangeRequestDTO;
+import ua.lomakin.linksaverserver.dto.link.LinkDelRequestDTO;
 import ua.lomakin.linksaverserver.service.LinkService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)

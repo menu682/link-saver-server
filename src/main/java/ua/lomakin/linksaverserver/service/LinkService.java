@@ -1,10 +1,10 @@
 package ua.lomakin.linksaverserver.service;
 
 import org.springframework.stereotype.Service;
-import ua.lomakin.linksaverserver.DTO.MessageResponseDTO;
-import ua.lomakin.linksaverserver.DTO.linkDTO.LinkAddRequestDTO;
-import ua.lomakin.linksaverserver.DTO.linkDTO.LinkChangeRequestDTO;
-import ua.lomakin.linksaverserver.DTO.linkDTO.LinkDelRequestDTO;
+import ua.lomakin.linksaverserver.dto.MessageResponseDTO;
+import ua.lomakin.linksaverserver.dto.link.LinkAddRequestDTO;
+import ua.lomakin.linksaverserver.dto.link.LinkChangeRequestDTO;
+import ua.lomakin.linksaverserver.dto.link.LinkDelRequestDTO;
 import ua.lomakin.linksaverserver.persistance.entity.category.CategoryEntity;
 import ua.lomakin.linksaverserver.persistance.entity.category.LinkEntity;
 import ua.lomakin.linksaverserver.persistance.entity.security.UserEntity;

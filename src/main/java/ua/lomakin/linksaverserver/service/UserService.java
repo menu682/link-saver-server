@@ -1,5 +1,8 @@
 package ua.lomakin.linksaverserver.service;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import ua.lomakin.linksaverserver.config.security.jwt.AuthTokenFilter;
 import ua.lomakin.linksaverserver.config.security.jwt.JwtUtils;
@@ -31,4 +34,5 @@ public class UserService {
         Long userId = jwtUtils.getUserIdFromJwtToken(token);
         return userRepository.getById(userId);
     }
+
 }

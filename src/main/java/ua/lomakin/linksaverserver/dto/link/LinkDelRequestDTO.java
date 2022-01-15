@@ -1,4 +1,4 @@
-package ua.lomakin.linksaverserver.DTO.linkDTO;
+package ua.lomakin.linksaverserver.dto.link;
 
 public class LinkDelRequestDTO {
 

@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ua.lomakin.linksaverserver.DTO.securityDTO.JwtResponseDTO;
-import ua.lomakin.linksaverserver.DTO.securityDTO.LoginRequestDTO;
-import ua.lomakin.linksaverserver.DTO.MessageResponseDTO;
-import ua.lomakin.linksaverserver.DTO.securityDTO.SignupRequestDTO;
+import ua.lomakin.linksaverserver.dto.security.JwtResponseDTO;
+import ua.lomakin.linksaverserver.dto.security.LoginRequestDTO;
+import ua.lomakin.linksaverserver.dto.MessageResponseDTO;
+import ua.lomakin.linksaverserver.dto.security.SignupRequestDTO;
 import ua.lomakin.linksaverserver.service.security.AuthService;
 
 import javax.validation.Valid;

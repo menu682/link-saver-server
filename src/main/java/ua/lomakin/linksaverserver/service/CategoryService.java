@@ -1,14 +1,14 @@
 package ua.lomakin.linksaverserver.service;
 
 import org.springframework.stereotype.Service;
-import ua.lomakin.linksaverserver.DTO.MessageResponseDTO;
-import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryAddRequestDTO;
-import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryAllLinksResponseDTO;
-import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryDTO;
-import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryDelRequestDTO;
-import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryPutRequestDTO;
-import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryResponseDTO;
-import ua.lomakin.linksaverserver.DTO.linkDTO.LinkDTO;
+import ua.lomakin.linksaverserver.dto.MessageResponseDTO;
+import ua.lomakin.linksaverserver.dto.category.CategoryAddRequestDTO;
+import ua.lomakin.linksaverserver.dto.category.CategoryAllLinksResponseDTO;
+import ua.lomakin.linksaverserver.dto.category.CategoryDTO;
+import ua.lomakin.linksaverserver.dto.category.CategoryDelRequestDTO;
+import ua.lomakin.linksaverserver.dto.category.CategoryPutRequestDTO;
+import ua.lomakin.linksaverserver.dto.category.CategoryResponseDTO;
+import ua.lomakin.linksaverserver.dto.link.LinkDTO;
 import ua.lomakin.linksaverserver.persistance.entity.category.CategoryEntity;
 import ua.lomakin.linksaverserver.persistance.entity.security.UserEntity;
 import ua.lomakin.linksaverserver.persistance.repository.CategoryRepository;

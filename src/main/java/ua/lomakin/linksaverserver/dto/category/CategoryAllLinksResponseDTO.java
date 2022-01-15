@@ -1,6 +1,6 @@
-package ua.lomakin.linksaverserver.DTO.categoryDTO;
+package ua.lomakin.linksaverserver.dto.category;
 
-import ua.lomakin.linksaverserver.DTO.linkDTO.LinkDTO;
+import ua.lomakin.linksaverserver.dto.link.LinkDTO;
 import java.util.List;
 
 

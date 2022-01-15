@@ -1,5 +1,6 @@
 package ua.lomakin.linksaverserver.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,12 +10,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ua.lomakin.linksaverserver.DTO.MessageResponseDTO;
-import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryAddRequestDTO;
-import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryAllLinksResponseDTO;
-import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryDelRequestDTO;
-import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryPutRequestDTO;
-import ua.lomakin.linksaverserver.DTO.categoryDTO.CategoryResponseDTO;
+import ua.lomakin.linksaverserver.dto.MessageResponseDTO;
+import ua.lomakin.linksaverserver.dto.category.CategoryAddRequestDTO;
+import ua.lomakin.linksaverserver.dto.category.CategoryAllLinksResponseDTO;
+import ua.lomakin.linksaverserver.dto.category.CategoryDelRequestDTO;
+import ua.lomakin.linksaverserver.dto.category.CategoryPutRequestDTO;
+import ua.lomakin.linksaverserver.dto.category.CategoryResponseDTO;
 import ua.lomakin.linksaverserver.service.CategoryService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)

@@ -1,4 +1,4 @@
-package ua.lomakin.linksaverserver.DTO.securityDTO;
+package ua.lomakin.linksaverserver.dto.security;
 
 import java.util.List;
 

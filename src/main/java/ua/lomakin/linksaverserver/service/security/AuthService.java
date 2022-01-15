@@ -6,10 +6,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ua.lomakin.linksaverserver.DTO.securityDTO.JwtResponseDTO;
-import ua.lomakin.linksaverserver.DTO.securityDTO.LoginRequestDTO;
-import ua.lomakin.linksaverserver.DTO.MessageResponseDTO;
-import ua.lomakin.linksaverserver.DTO.securityDTO.SignupRequestDTO;
+import ua.lomakin.linksaverserver.dto.security.JwtResponseDTO;
+import ua.lomakin.linksaverserver.dto.security.LoginRequestDTO;
+import ua.lomakin.linksaverserver.dto.MessageResponseDTO;
+import ua.lomakin.linksaverserver.dto.security.SignupRequestDTO;
 import ua.lomakin.linksaverserver.config.security.UserDetailsImpl;
 import ua.lomakin.linksaverserver.config.security.jwt.JwtUtils;
 import ua.lomakin.linksaverserver.persistance.ERole;
@@ -88,7 +88,6 @@ public class AuthService {
         userEntity.setUsername(signupRequestDTO.getUsername());
         userEntity.setEmail(signupRequestDTO.getEmail());
         userEntity.setPassword(encoder.encode(signupRequestDTO.getPassword()));
-
         Set<String> strRoles = signupRequestDTO.getRole();
         Set<RoleEntity> roles = new HashSet<>();
 
@@ -99,16 +98,7 @@ public class AuthService {
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
-
-//  получается что достаточно передать при регистрации admin и ты уже админ ? непорядок ...
-
-//                    case "admin":
-//                        RoleEntity adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-//                                .orElseThrow(() -> new RuntimeException("Такой роли нет"));
-//                        roles.add(adminRole);
-//
-//                        break;
-
+//todo: add any roles this
                     default:
                         RoleEntity userRole = roleRepository.findByName(ERole.ROLE_USER)
                                 .orElseThrow(() -> new RuntimeException("Такой роли нет"));

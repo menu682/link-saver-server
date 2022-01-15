@@ -1,4 +1,4 @@
-package ua.lomakin.linksaverserver.DTO;
+package ua.lomakin.linksaverserver.dto;
 
 public class MessageResponseDTO {
 
