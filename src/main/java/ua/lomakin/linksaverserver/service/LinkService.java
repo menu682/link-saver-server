@@ -1,5 +1,6 @@
 package ua.lomakin.linksaverserver.service;
 
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 import ua.lomakin.linksaverserver.dto.MessageResponseDTO;
 import ua.lomakin.linksaverserver.dto.link.LinkAddRequestDTO;
@@ -20,24 +21,21 @@ public class LinkService {
 
     LinkRepository linkRepository;
     CategoryRepository categoryRepository;
-    UserService userService;
 
     public LinkService(LinkRepository linkRepository,
-                       CategoryRepository categoryRepository,
-                       UserService userService) {
+                       CategoryRepository categoryRepository) {
         this.linkRepository = linkRepository;
         this.categoryRepository = categoryRepository;
-        this.userService = userService;
     }
 
-    public MessageResponseDTO addLink(LinkAddRequestDTO linkAddRequestDTO) {
+    public MessageResponseDTO addLink(LinkAddRequestDTO linkAddRequestDTO,
+                                      UserEntity user) {
 
         if(linkAddRequestDTO.getLinkName().isBlank()
                 || linkAddRequestDTO.getUrl().isBlank()){
             throw new RuntimeException("Не все поля заполнены!");
         }
 
-        UserEntity user = userService.getCurrentUser();
         CategoryEntity category = categoryRepository
                 .findById(linkAddRequestDTO.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("Нет такой категории"));
@@ -63,14 +61,14 @@ public class LinkService {
         return new MessageResponseDTO("Ссылка добавлена");
     }
 
-    public MessageResponseDTO changeLink(LinkChangeRequestDTO linkChangeRequestDTO) {
+    public MessageResponseDTO changeLink(LinkChangeRequestDTO linkChangeRequestDTO,
+                                         UserEntity user) {
 
         if(linkChangeRequestDTO.getNewLinkName().isBlank()
                 || linkChangeRequestDTO.getNewUrl().isBlank()){
             throw new RuntimeException("Не все поля заполнены!");
         }
 
-        UserEntity user = userService.getCurrentUser();
         CategoryEntity category = categoryRepository
                 .findById(linkChangeRequestDTO.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("Нет такой категории"));
@@ -102,9 +100,9 @@ public class LinkService {
         return new MessageResponseDTO("Ссылка изменена");
     }
 
-    public MessageResponseDTO deleteLink(LinkDelRequestDTO linkDelRequestDTO) {
+    public MessageResponseDTO deleteLink(LinkDelRequestDTO linkDelRequestDTO,
+                                         UserEntity user) {
 
-        UserEntity user = userService.getCurrentUser();
         CategoryEntity category = categoryRepository
                 .findById(linkDelRequestDTO.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("Нет такой категории"));

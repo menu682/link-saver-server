@@ -1,5 +1,6 @@
 package ua.lomakin.linksaverserver.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ua.lomakin.linksaverserver.config.security.UserDetailsImpl;
 import ua.lomakin.linksaverserver.dto.MessageResponseDTO;
 import ua.lomakin.linksaverserver.dto.link.LinkAddRequestDTO;
 import ua.lomakin.linksaverserver.dto.link.LinkChangeRequestDTO;
@@ -25,18 +27,21 @@ public class LinkController {
     }
 
     @PostMapping()
-    public MessageResponseDTO addLink(@RequestBody LinkAddRequestDTO linkAddRequestDTO){
-        return linkService.addLink(linkAddRequestDTO);
+    public MessageResponseDTO addLink(@RequestBody LinkAddRequestDTO linkAddRequestDTO,
+                                      @AuthenticationPrincipal UserDetailsImpl userDetailsImp){
+        return linkService.addLink(linkAddRequestDTO, userDetailsImp.getUser());
     }
 
     @PutMapping()
-    public MessageResponseDTO changeLink(@RequestBody LinkChangeRequestDTO linkChangeRequestDTO){
-        return linkService.changeLink(linkChangeRequestDTO);
+    public MessageResponseDTO changeLink(@RequestBody LinkChangeRequestDTO linkChangeRequestDTO,
+                                         @AuthenticationPrincipal UserDetailsImpl userDetailsImp){
+        return linkService.changeLink(linkChangeRequestDTO, userDetailsImp.getUser());
     }
 
     @DeleteMapping()
-    public MessageResponseDTO deleteLink(@RequestBody LinkDelRequestDTO linkDelRequestDTO){
-        return linkService.deleteLink(linkDelRequestDTO);
+    public MessageResponseDTO deleteLink(@RequestBody LinkDelRequestDTO linkDelRequestDTO,
+                                         @AuthenticationPrincipal UserDetailsImpl userDetailsImp){
+        return linkService.deleteLink(linkDelRequestDTO, userDetailsImp.getUser());
     }
 
 }
