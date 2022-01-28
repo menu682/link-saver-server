@@ -30,6 +30,4 @@ public class ExeptionController extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>((body != null ? body
                 : new MessageResponseDTO(ex.getMessage())), headers, status);
     }
-
-
 }

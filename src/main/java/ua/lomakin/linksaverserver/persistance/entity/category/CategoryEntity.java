@@ -4,10 +4,7 @@ package ua.lomakin.linksaverserver.persistance.entity.category;
 import ua.lomakin.linksaverserver.persistance.entity.BaseEntity;
 import ua.lomakin.linksaverserver.persistance.entity.security.UserEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
@@ -18,7 +15,7 @@ public class CategoryEntity extends BaseEntity {
     @Column(name = "name", nullable = false)
     private String categoryName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private UserEntity user;
 
     public CategoryEntity() {
