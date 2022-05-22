@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "6b084d60-cd7d-47cc-bb05-deab8338e530",
+		"name": "Link saver",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"dimas\",\r\n    \"email\":\"dimas@email.net\",\r\n    \"password\":\"qwerty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/register/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"dimas\",\r\n    \"password\":\"qwerty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJMaW5rU2VydmVyIiwiaWF0IjoxNjQzMDQyNDg1LCJleHAiOjE2NDMxMjg4ODUsInVzZXJpZCI6MiwidXNlcm5hbWUiOiJkaW1hcyJ9.Aa1R-zgpqKwodYgPScuZSgLoqBjYOH1x37pcb2GE84D6iwWEJojsiXusg7vKw668mb4fKhvn80RpXymb4WxCGw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJMaW5rU2VydmVyIiwiaWF0IjoxNjM5OTAzOTkwLCJleHAiOjE2Mzk5OTAzOTAsInVzZXJpZCI6NiwidXNlcm5hbWUiOiJkaW1hcyJ9.BHBUkAxzcskbIKh5IIZRCZ53JUkSVNIkoL_4OjPKN1p-i0vJrOowppatcBd9becm8x2dIK5bRMeIAr8SpqYu3w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryName\":\"test category 3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/category/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"category",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change category name",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJMaW5rU2VydmVyIiwiaWF0IjoxNjM5OTAzOTkwLCJleHAiOjE2Mzk5OTAzOTAsInVzZXJpZCI6NiwidXNlcm5hbWUiOiJkaW1hcyJ9.BHBUkAxzcskbIKh5IIZRCZ53JUkSVNIkoL_4OjPKN1p-i0vJrOowppatcBd9becm8x2dIK5bRMeIAr8SpqYu3w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryId\":\"2\",\r\n    \"newCategoryName\":\"category 1 name\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/category/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"category",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add link",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJMaW5rU2VydmVyIiwiaWF0IjoxNjQwNDU1ODA0LCJleHAiOjE2NDA1NDIyMDQsInVzZXJpZCI6NiwidXNlcm5hbWUiOiJkaW1hcyJ9.kl_DmT-jA9YDVMInbvz5vZqeMgXXdyGnhiMhv3cWQNWXI8aRmGrcJUJ4Y14qkrNCLfOQnpG4VYrSCeWclcC_FQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"linkName\":\"link 1\",\r\n    \"url\":\"some url 1\",\r\n    \"categoryId\": 30\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/link/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"link",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change link",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJMaW5rU2VydmVyIiwiaWF0IjoxNjM5OTMwMzk2LCJleHAiOjE2NDAwMTY3OTYsInVzZXJpZCI6NiwidXNlcm5hbWUiOiJkaW1hcyJ9.x1OITPaCgtkvHdwpy1FZ_iQ0ctW82cqAznkL1NSiKh2hI_u8yFM-ZjjAGBiIfr2M63jse7jFDWj9EiDkc2_TqQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"oldLinkName\":\"new name\",\r\n    \"oldUrl\":\"new url\",\r\n    \"categoryId\": 1,\r\n    \"linkId\": 4,\r\n    \"newLinkName\":\"new name 1\",\r\n    \"newUrl\":\"new url 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/link/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"link",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete link",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJMaW5rU2VydmVyIiwiaWF0IjoxNjM5OTMwMzk2LCJleHAiOjE2NDAwMTY3OTYsInVzZXJpZCI6NiwidXNlcm5hbWUiOiJkaW1hcyJ9.x1OITPaCgtkvHdwpy1FZ_iQ0ctW82cqAznkL1NSiKh2hI_u8yFM-ZjjAGBiIfr2M63jse7jFDWj9EiDkc2_TqQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"categoryId\": 2,\r\n    \"linkId\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/link/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"link",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete category",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJMaW5rU2VydmVyIiwiaWF0IjoxNjQwMDE3Njg0LCJleHAiOjE2NDAxMDQwODQsInVzZXJpZCI6NiwidXNlcm5hbWUiOiJkaW1hcyJ9.VwgqaR14Z9fkaBwSGCqKrHMcP8d8BCxx69GAmW2qIXYOEGb15BFMKR1iil5rfsn4tZK-gwm7AZ40wVmiAHqCwQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/category/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"category",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJMaW5rU2VydmVyIiwiaWF0IjoxNjQzMzg3MjA2LCJleHAiOjE2NDM0NzM2MDYsInVzZXJpZCI6MiwidXNlcm5hbWUiOiJkaW1hcyJ9._Q2-FQMduJk_G0xokG7oAjOPtfY85Pl6Cig1aZ_0TTpSrTvPQRKecgc4Jpspv3wkrK5i4bWd_ISGU4AWU2aDlg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJMaW5rU2VydmVyIiwiaWF0IjoxNjQzMDQyNDg1LCJleHAiOjE2NDMxMjg4ODUsInVzZXJpZCI6MiwidXNlcm5hbWUiOiJkaW1hcyJ9.Aa1R-zgpqKwodYgPScuZSgLoqBjYOH1x37pcb2GE84D6iwWEJojsiXusg7vKw668mb4fKhvn80RpXymb4WxCGw",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all links from category",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJMaW5rU2VydmVyIiwiaWF0IjoxNjQwNDU1ODA0LCJleHAiOjE2NDA1NDIyMDQsInVzZXJpZCI6NiwidXNlcm5hbWUiOiJkaW1hcyJ9.kl_DmT-jA9YDVMInbvz5vZqeMgXXdyGnhiMhv3cWQNWXI8aRmGrcJUJ4Y14qkrNCLfOQnpG4VYrSCeWclcC_FQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/category/30",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"category",
+						"30"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
